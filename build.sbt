@@ -105,7 +105,7 @@ lazy val styleSettings = {
 // *****************************************************************************
 
 addCommandAlias("fix", "; compile:scalafix; test:scalafix")
-addCommandAlias("fixCheck", "; compile:scalafix --check; test:scalafix --check")
+addCommandAlias("fixcheck", "; compile:scalafix --check; test:scalafix --check")
 addCommandAlias("fmt", "; compile:scalafmt; test:scalafmt; scalafmtSbt")
-addCommandAlias("fmtCheck", "; compile:scalafmtCheck; test:scalafmtCheck; scalafmtSbtCheck")
-addCommandAlias("styleCheck", "; compile:scalastyle; test:scalastyle")
+addCommandAlias("fmtcheck", "; compile:scalafmtCheck; test:scalafmtCheck; scalafmtSbtCheck")
+addCommandAlias("stylecheck", "; compile:scalastyle; test:scalastyle")
