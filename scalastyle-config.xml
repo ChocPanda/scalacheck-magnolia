@@ -63,7 +63,7 @@
             <parameter name="regex"><![CDATA[println]]></parameter>
         </parameters>
     </check>
-    <check class="org.scalastyle.scalariform.NumberOfTypesChecker" level="warning" enabled="true">
+    <check class="org.scalastyle.scalariform.NumberOfTypesChecker" level="warning" enabled="false">
         <parameters>
             <parameter name="maxTypes"><![CDATA[30]]></parameter>
         </parameters>

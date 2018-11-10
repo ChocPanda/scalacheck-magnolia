@@ -15,7 +15,7 @@
  */
 
 package org.scalacheck.magnolia.adt
-
+// scalastyle:off
 final case class EmptyCC()
 
 /*
