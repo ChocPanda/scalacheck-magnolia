@@ -5,14 +5,18 @@
 lazy val `scalacheck-magnolia` =
   project
     .in(file("."))
-    .enablePlugins(AutomateHeaderPlugin)
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
-        library.scalaCheck % Test,
-        library.utest      % Test
+        library.magnolia,
+        library.scalaCheck,
+      ),
+      libraryDependencies ++= Seq(
+        library.utest % Test
       )
     )
+    .enablePlugins(AutomateHeaderPlugin)
+    .enablePlugins(GitBranchPrompt)
 
 // *****************************************************************************
 // Library dependencies
@@ -21,9 +25,12 @@ lazy val `scalacheck-magnolia` =
 lazy val library =
   new {
     object Version {
+      val magnolia   = "0.10.0"
       val scalaCheck = "1.14.0"
       val utest      = "0.6.6"
     }
+
+    val magnolia   = "com.propensive" %% "magnolia"   % Version.magnolia
     val scalaCheck = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
     val utest      = "com.lihaoyi"    %% "utest"      % Version.utest
   }
@@ -33,8 +40,8 @@ lazy val library =
 // *****************************************************************************
 
 lazy val settings =
-  commonSettings ++
-  scalafmtSettings
+commonSettings ++
+scalafmtSettings
 
 lazy val commonSettings =
   Seq(
@@ -42,6 +49,7 @@ lazy val commonSettings =
     // scalaVersion := "2.12.7",
     organization := "io.panda",
     organizationName := "Matt Searle",
+    name := "Scalacheck Magnolia",
     startYear := Some(2018),
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     scalacOptions ++= Seq(
@@ -49,7 +57,8 @@ lazy val commonSettings =
       "-deprecation",
       "-language:_",
       "-target:jvm-1.8",
-      "-encoding", "UTF-8",
+      "-encoding",
+      "UTF-8",
       "-Ypartial-unification",
       "-Ywarn-unused-import"
     ),
@@ -57,9 +66,36 @@ lazy val commonSettings =
     Test / unmanagedSourceDirectories := Seq((Test / scalaSource).value),
     testFrameworks += new TestFramework("utest.runner.Framework"),
     Compile / compile / wartremoverWarnings ++= Warts.unsafe
-)
+  )
 
 lazy val scalafmtSettings =
   Seq(
     scalafmtOnCompile := true
   )
+
+lazy val fixSettings =
+  Seq(
+    libraryDependencies += compilerPlugin(scalafixSemanticdb),
+    scalacOptions ++= Seq(
+      "-Yrangepos",
+      "-Ywarn-unused-import"
+    )
+  )
+
+lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")
+lazy val styleSettings = {
+  Seq(
+    scalastyleFailOnError := true,
+    scalastyleFailOnWarning := true
+  )
+}
+
+// *****************************************************************************
+// Commands
+// *****************************************************************************
+
+addCommandAlias("fix", "; compile:scalafix; test:scalafix")
+addCommandAlias("fixCheck", "; compile:scalafix --check; test:scalafix --check")
+addCommandAlias("fmt", "; compile:scalafmt; test:scalafmt; scalafmtSbt")
+addCommandAlias("fmtCheck", "; compile:scalafmtCheck; test:scalafmtCheck; scalafmtSbtCheck")
+addCommandAlias("styleCheck", "; compile:scalastyle; test:scalastyle")
