@@ -8,10 +8,6 @@ language: scala
 scala:
   - 2.12.7
 
-branches:
-  only:
-    - master
-
 jdk: oraclejdk8
 
 stages:
