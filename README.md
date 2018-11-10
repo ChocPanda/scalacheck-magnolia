@@ -9,7 +9,7 @@ compile time benefits that magnolia provides over shapeless.
 
 It's very simple to use simply add to your build.sbt: (Not published yet but it will be soon)
 ```
-    libraryDependencies += "io.panda" % scalacheck-magnolia % 1.0
+    libraryDependencies += "com.github.chocpanda" % scalacheck-magnolia % 1.0
 ```
 
 and import:
