@@ -76,7 +76,7 @@ final case class Latin(a: Letter,
     extends Alphabet
 
 final case class Letter(name: String, phonetic: String)
-final case class Country(name: String, language: Language, leader: Person, existence: DateRange)
+final case class Country(name: String, language: List[Language], leader: Person, existence: DateRange)
 final case class Language(name: String, code: String, alphabet: Alphabet)
 final case class Person(name: String, dateOfBirth: Date)
 final case class Date(year: Int, month: Month, day: Int)
@@ -95,8 +95,3 @@ case object Sep extends Month
 case object Oct extends Month
 case object Nov extends Month
 case object Dec extends Month
-
-object WeekDay extends Enumeration {
-  type WeekDay = Value
-  val Mon, Tue, Wed, Thu, Fri, Sat, Sun = Value
-}

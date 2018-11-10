@@ -23,9 +23,6 @@ import org.scalacheck.rng.Seed
 object Utils {
 
   /**
-    * Provides a nice syntax for asserting things are equal, that is pretty
-    * enough to embed in documentation and examples
-    *
     * This was largely copy and pasted from:
     * https://github.com/lihaoyi/utest/blob/5b382ae0a4bb3a25d8cb64d332b7bcb7fc73ace2/utest/shared/src/main/scala/utest/asserts/Asserts.scala#L185
     *
@@ -38,17 +35,36 @@ object Utils {
         // custom, extensible, typesafe equality check but for now this will do
         case (lhs: Array[_], rhs: Array[_]) =>
           Predef.assert(lhs.toSeq == rhs.toSeq, s"==> assertion failed: ${lhs.toSeq} != ${rhs.toSeq}")
+        case (lhs: Gen[_], rhs: Gen[_]) =>
+          compareGen(lhs, rhs)(100)
         case (lhs: Arbitrary[_], rhs: Arbitrary[_]) =>
-          compareArbitrary(lhs, rhs)(100)
+          compareGen(lhs.arbitrary, rhs.arbitrary)(100)
         case (_, _) =>
           Predef.assert(lhs == rhs, s"==> assertion failed: $lhs != $rhs")
       }
 
       true
     }
+
+    def =!=>[V](rhs: V): Boolean = {
+      (lhs, rhs) match {
+        // Hack to make Arrays compare sanely; at some point we may want some
+        // custom, extensible, typesafe equality check but for now this will do
+        case (lhs: Array[_], rhs: Array[_]) =>
+          Predef.assert(lhs.toSeq != rhs.toSeq, s"==> assertion failed: ${lhs.toSeq} != ${rhs.toSeq}")
+        case (lhs: Gen[_], rhs: Gen[_]) =>
+          compareGenNot(lhs, rhs)(100)
+        case (lhs: Arbitrary[_], rhs: Arbitrary[_]) =>
+          compareGenNot(lhs.arbitrary, rhs.arbitrary)(100)
+        case (_, _) =>
+          Predef.assert(lhs != rhs, s"==> assertion failed: $lhs != $rhs")
+      }
+
+      true
+    }
   }
 
-  private def compareArbitrary[T](first: Gen[T], second: Gen[T])(len: Int): Unit = {
+  def compareGen[T](first: Gen[T], second: Gen[T])(len: Int): Unit = {
     val parameters = Parameters.default
     val seed       = Seed.random()
 
@@ -58,7 +74,20 @@ object Utils {
         .zip(Stream.continually(second.doApply(parameters, seed).retrieve))
         .take(len)
 
-    Predef.assert(generated.forall { case (a, b) => a == b })
+    generated.foreach { case (a, b) => a ==> b }
+  }
+
+  def compareGenNot[T](first: Gen[T], second: Gen[T])(len: Int): Unit = {
+    val parameters = Parameters.default
+    val seed       = Seed.random()
+
+    val generated =
+      Stream
+        .continually(first.doApply(parameters, seed).retrieve)
+        .zip(Stream.continually(second.doApply(parameters, seed).retrieve))
+        .take(len)
+
+    generated.foreach { case (a, b) => a =!=> b }
   }
 
 }
