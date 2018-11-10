@@ -19,8 +19,8 @@ package org.scalacheck.magnolia.adt
 final case class EmptyCC()
 
 /*
-  For testing purposes I am using the adt's used to benchmark magnolia
-  These were copied and pasted from https://github.com/propensive/magnolia/blob/master/benchmarks/2.12/src/adt.scala
+ * For testing purposes I am using the adt's used to benchmark magnolia
+ * These were copied and pasted from https://github.com/propensive/magnolia/blob/master/benchmarks/2.12/src/adt.scala
  */
 
 sealed trait Tree

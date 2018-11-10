@@ -1,7 +1,25 @@
+# See https://www.scala-sbt.org/1.0/docs/Travis-CI-with-sbt.html
+
+
+sudo: false
+
 language: scala
 
 scala:
   - 2.12.7
 
-jdk:
-  - oraclejdk8
+branches:
+  only:
+    - master
+
+jdk: oraclejdk8
+
+script:
+  - sbt fmt --check; fix --check;
+  - sbt ++$TRAVIS_SCALA_VERSION test
+
+
+before_cache:
+  # Tricks to avoid unnecessary cache updates
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm

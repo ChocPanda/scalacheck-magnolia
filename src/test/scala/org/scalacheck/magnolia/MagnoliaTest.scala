@@ -37,7 +37,7 @@ object MagnoliaTest extends TestSuite {
     } yield Simple(p1, p2, p3)
 
   final case class Nested(param1: Int, param2: String, param3: Simple) extends TestTrait
-  def expectedNestedGen: Gen[Nested] =
+  private lazy val expectedNestedGen: Gen[Nested] =
     for {
       p1 <- Arbitrary.arbInt.arbitrary
       p2 <- Arbitrary.arbString.arbitrary
@@ -45,7 +45,7 @@ object MagnoliaTest extends TestSuite {
     } yield Nested(p1, p2, p3)
 
   final case class Recursive(param1: Int, param2: String, param3: TestTrait) extends TestTrait
-  def expectedRecursiveGen: Gen[Recursive] =
+  private lazy val expectedRecursiveGen: Gen[Recursive] =
     for {
       p1 <- Arbitrary.arbInt.arbitrary
       p2 <- Arbitrary.arbString.arbitrary

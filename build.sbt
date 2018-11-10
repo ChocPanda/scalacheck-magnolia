@@ -47,7 +47,7 @@ lazy val commonSettings =
   Seq(
     // scalaVersion from .travis.yml via sbt-travisci
     // scalaVersion := "2.12.7",
-    organization := "io.panda",
+    organization := "com.github.chocpanda",
     organizationName := "Matt Searle",
     name := "Scalacheck Magnolia",
     startYear := Some(2018),
