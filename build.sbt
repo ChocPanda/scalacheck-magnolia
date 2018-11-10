@@ -62,6 +62,7 @@ lazy val commonSettings =
         url("https://github.com/ChocPanda/")
       )
     ),
+    updateOptions := updateOptions.value.withGigahorse(false),
     scalacOptions ++= Seq(
       "-unchecked",
       "-deprecation",

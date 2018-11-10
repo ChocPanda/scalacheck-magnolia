@@ -2,6 +2,8 @@
 
 Welcome to scalacheck-magnolia!
 
+[![Build Status](https://travis-ci.org/ChocPanda/scalacheck-magnolia.svg?branch=master)](https://travis-ci.org/ChocPanda/scalacheck-magnolia)
+
 This library will derive instances of the Arbitrary type class from [scalacheck](https://github.com/rickynils/scalacheck)
 using [Magnolia](https://github.com/propensive/magnolia). The functionality would be very similar to
 [scalacheck-shapeless](https://github.com/alexarchambault/scalacheck-shapeless) but hopefully with the
