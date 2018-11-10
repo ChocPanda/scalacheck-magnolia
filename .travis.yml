@@ -21,13 +21,17 @@ stages:
 
 jobs:
   include:
-    - env: TEST="scalafmt"
+    - env: TEST="scalafmt --check - Using fmtcheck"
+      name: "Formatting checks"
       script: sbt fmtcheck
-    - env: TEST="scalastyle"
+    - env: TEST="scalastyle - Using stylecheck"
+      name: "Style Checks"
       script: sbt stylecheck
-    - env: TEST="scalafix"
+    - env: TEST="scalafix --check - Using fixcheck"
+      name: "Extended style checks"
       script: sbt fixcheck
     - env: TEST="compile"
+      name: "Compile"
       script: sbt compile
     - stage: release
       script: sbt ci-release
