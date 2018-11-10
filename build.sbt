@@ -41,17 +41,27 @@ lazy val library =
 
 lazy val settings =
 commonSettings ++
-scalafmtSettings
+fmtSettings ++
+fixSettings ++
+styleSettings
 
 lazy val commonSettings =
   Seq(
     // scalaVersion from .travis.yml via sbt-travisci
     // scalaVersion := "2.12.7",
-    organization := "com.github.chocpanda",
-    organizationName := "Matt Searle",
     name := "Scalacheck Magnolia",
+    organization := "com.github.chocpanda",
+    homepage := Option(url("https://github.com/ChocPanda/scalacheck-magnolia")),
     startYear := Some(2018),
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
+    developers := List(
+      Developer(
+        "ChocPanda",
+        "Matt Searle",
+        "mattsearle@ymail.com",
+        url("https://github.com/ChocPanda/")
+      )
+    ),
     scalacOptions ++= Seq(
       "-unchecked",
       "-deprecation",
@@ -68,7 +78,7 @@ lazy val commonSettings =
     Compile / compile / wartremoverWarnings ++= Warts.unsafe
   )
 
-lazy val scalafmtSettings =
+lazy val fmtSettings =
   Seq(
     scalafmtOnCompile := true
   )
