@@ -22,7 +22,7 @@ stages:
 jobs:
   include:
     - env: TEST="scalafmt and scalafix"
-      script: sbt fmt --check; fix --check;
+      script: sbt fmtCheck; fixCheck;
     - env: TEST="compile"
       script: sbt compile
     - stage: release
