@@ -3,6 +3,7 @@
 Welcome to scalacheck-magnolia!
 
 [![Build Status](https://travis-ci.org/ChocPanda/scalacheck-magnolia.svg?branch=master)](https://travis-ci.org/ChocPanda/scalacheck-magnolia)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.chocpanda/scalacheck-magnolia/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.chocpanda/scalacheck-magnolia)
 
 This library will derive instances of the Arbitrary type class from [scalacheck](https://github.com/rickynils/scalacheck)
 using [Magnolia](https://github.com/propensive/magnolia). The functionality would be very similar to
@@ -10,12 +11,12 @@ using [Magnolia](https://github.com/propensive/magnolia). The functionality woul
 compile time benefits that magnolia provides over shapeless.
 
 It's very simple to use simply add to your build.sbt: (Not published yet but it will be soon)
-```
-    libraryDependencies += "com.github.chocpanda" % scalacheck-magnolia % 1.0
+```scala
+    libraryDependencies += "com.github.chocpanda" % scalacheck-magnolia % 0.2.2
 ```
 
 and import:
-```
+```scala
    import org.scalacheck.magnolia._
 ```
 
@@ -26,14 +27,14 @@ into the relevant test files for instances of Arbitrary for all your testing nee
 It can derive arbitrary instances of product or sum types, and because magnolia does so recursively
 it can also derive instances of nested data types.
 
-```
+```scala
 package org.scalacheck.magnolia.example
 
 import org.scalacheck.magnolia._
 import org.scalacheck.Prop._
 import utest._
 
-object ExampleTest extends TestSuite {    
+object ExampleTest extends TestSuite {
     
     sealed trait Entity
     
@@ -57,14 +58,14 @@ object ExampleTest extends TestSuite {
     
 It works with recursive types:
 
-```
+```scala
 package org.scalacheck.magnolia.example
 
 import org.scalacheck.magnolia._
 import org.scalacheck.Prop._
 import utest._
 
-object ExampleTest extends TestSuite {    
+object ExampleTest extends TestSuite {
 
     sealed trait Tree
     final case class Leaf(value: String)             extends Tree
@@ -81,14 +82,14 @@ object ExampleTest extends TestSuite {
 
 It even works with Generics:
 
-```
+```scala
 package org.scalacheck.magnolia.example
 
 import org.scalacheck.magnolia._
 import org.scalacheck.Prop._
 import utest._
 
-object ExampleTest extends TestSuite {    
+object ExampleTest extends TestSuite {
     
     sealed trait GTree[+T]
     final case class GLeaf[+T](value: String)                     extends GTree[T]
