@@ -8,7 +8,7 @@ using [Magnolia](https://github.com/propensive/magnolia). The functionality woul
 [scalacheck-shapeless](https://github.com/alexarchambault/scalacheck-shapeless) but hopefully with the
 compile time benefits that magnolia provides over shapeless.
 
-It's very simple to use simply add to your build.sbt: (Not published yet but it will be soon)
+It's very simple to use simply add to your build.sbt:
 ```scala
     libraryDependencies += "com.github.chocpanda" % scalacheck-magnolia % 0.2.2
 ```
