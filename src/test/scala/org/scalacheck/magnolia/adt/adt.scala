@@ -15,7 +15,7 @@
  */
 
 package org.scalacheck.magnolia.adt
-// scalastyle:off
+
 final case class EmptyCC()
 
 /*
@@ -28,7 +28,7 @@ final case class Leaf(value: String)             extends Tree
 final case class Branch(left: Tree, right: Tree) extends Tree
 
 sealed trait GTree[+T]
-final case class GLeaf[+T](value: String)                     extends GTree[T]
+final case class GLeaf[+T](value: T)                          extends GTree[T]
 final case class GBranch[+T](left: GTree[T], right: GTree[T]) extends GTree[T]
 
 sealed trait Entity
@@ -39,17 +39,17 @@ final case class Address(line1: String, occupant: Human)
 
 sealed trait Alphabet
 
-final case class Greek(άλφα: Letter,
-                       βήτα: Letter,
-                       γάμα: Letter,
-                       δέλτα: Letter,
-                       έψιλον: Letter,
-                       ζήτα: Letter,
-                       ήτα: Letter,
-                       θήτα: Letter)
+final case class Greek(`άλφα`: Letter,
+                       `βήτα`: Letter,
+                       `γάμα`: Letter,
+                       `δέλτ`: Letter,
+                       `έψιλον`: Letter,
+                       `ζήτα`: Letter,
+                       `ήτ`: Letter,
+                       `θήτα`: Letter)
     extends Alphabet
 
-final case class Cyrillic(б: Letter, в: Letter, г: Letter, д: Letter, ж: Letter, з: Letter) extends Alphabet
+final case class Cyrillic(`б`: Letter, `в`: Letter, `г`: Letter, `д`: Letter, `ж`: Letter, `з`: Letter) extends Alphabet
 
 final case class Latin(a: Letter,
                        b: Letter,

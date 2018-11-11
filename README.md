@@ -90,7 +90,7 @@ import utest._
 object ExampleTest extends TestSuite {
     
     sealed trait GTree[+T]
-    final case class GLeaf[+T](value: String)                     extends GTree[T]
+    final case class GLeaf[+T](value: T)                          extends GTree[T]
     final case class GBranch[+T](left: GTree[T], right: GTree[T]) extends GTree[T]
 
     val tests = Tests {
