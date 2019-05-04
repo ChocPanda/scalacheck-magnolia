@@ -1,7 +1,7 @@
 # Scalacheck Magnolia #
 
 [![Build Status](https://travis-ci.org/ChocPanda/scalacheck-magnolia.svg?branch=master)](https://travis-ci.org/ChocPanda/scalacheck-magnolia)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.chocpanda/scalacheck-magnolia_2.12/badge.svg)](https://search.maven.org/artifact/com.github.chocpanda/argonaut-magnolia_2.12/0.2.0/jar)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.chocpanda/scalacheck-magnolia_2.12/badge.svg)](https://search.maven.org/search?q=a:scalacheck-magnolia_2.12)
 
 This library will derive instances of the Arbitrary type class from [scalacheck](https://github.com/rickynils/scalacheck)
 using [Magnolia](https://github.com/propensive/magnolia). The functionality would be very similar to
