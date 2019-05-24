@@ -27,7 +27,7 @@ lazy val library =
     object Version {
       val magnolia   = "0.10.0"
       val scalaCheck = "1.14.0"
-      val utest      = "0.6.6"
+      val utest      = "0.6.7"
     }
 
     val magnolia   = "com.propensive" %% "magnolia"   % Version.magnolia
