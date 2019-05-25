@@ -86,7 +86,7 @@ lazy val fmtSettings =
 
 lazy val fixSettings =
   Seq(
-    libraryDependencies += compilerPlugin(scalafixSemanticdb),
+    addCompilerPlugin(scalafixSemanticdb),
     scalacOptions ++= Seq(
       "-Yrangepos",
       "-Ywarn-unused-import"
