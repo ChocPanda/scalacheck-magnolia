@@ -31,7 +31,7 @@ jobs:
       script: sbt compile
     - env: TEST="test"
       name: "Unit tests"
-      script: sbt test
+      script: bash scripts/run-ci-tests.sh
     - stage: release
       script: sbt ci-release
 
