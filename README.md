@@ -1,5 +1,6 @@
 # Scalacheck Magnolia #
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b6042a90ee4947da83606933e800b122)](https://app.codacy.com/app/ChocPanda/scalacheck-magnolia?utm_source=github.com&utm_medium=referral&utm_content=ChocPanda/scalacheck-magnolia&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/ChocPanda/scalacheck-magnolia.svg?branch=master)](https://travis-ci.org/ChocPanda/scalacheck-magnolia)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.chocpanda/scalacheck-magnolia_2.12/badge.svg)](https://search.maven.org/search?q=a:scalacheck-magnolia_2.12)
 
