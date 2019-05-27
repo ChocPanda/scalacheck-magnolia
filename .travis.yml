@@ -29,6 +29,9 @@ jobs:
     - env: TEST="compile"
       name: "Compile"
       script: sbt compile
+    - env: TEST="test"
+      name: "Unit tests"
+      script: sbt test
     - stage: release
       script: sbt ci-release
 
