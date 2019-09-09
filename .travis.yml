@@ -8,8 +8,6 @@ language: scala
 scala:
   - 2.12.7
 
-jdk: oraclejdk8
-
 stages:
   - name: test
   - name: release
