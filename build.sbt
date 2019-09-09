@@ -8,12 +8,12 @@ lazy val `scalacheck-magnolia` =
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
-        library.magnolia,
-        library.scalaCheck,
-      ),
+          library.magnolia,
+          library.scalaCheck
+        ),
       libraryDependencies ++= Seq(
-        library.utest % Test
-      )
+          library.utest % Test
+        )
     )
     .enablePlugins(AutomateHeaderPlugin)
     .enablePlugins(GitBranchPrompt)
@@ -40,10 +40,10 @@ lazy val library =
 // *****************************************************************************
 
 lazy val settings =
-commonSettings ++
-fmtSettings ++
-fixSettings ++
-styleSettings
+  commonSettings ++
+  fmtSettings ++
+  fixSettings ++
+  styleSettings
 
 lazy val commonSettings =
   Seq(
@@ -55,24 +55,24 @@ lazy val commonSettings =
     startYear := Some(2018),
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers := List(
-      Developer(
-        "ChocPanda",
-        "Matt Searle",
-        "mattsearle@ymail.com",
-        url("https://github.com/ChocPanda/")
-      )
-    ),
+        Developer(
+          "ChocPanda",
+          "Matt Searle",
+          "mattsearle@ymail.com",
+          url("https://github.com/ChocPanda/")
+        )
+      ),
     updateOptions := updateOptions.value.withGigahorse(false),
     scalacOptions ++= Seq(
-      "-unchecked",
-      "-deprecation",
-      "-language:_",
-      "-target:jvm-1.8",
-      "-encoding",
-      "UTF-8",
-      "-Ypartial-unification",
-      "-Ywarn-unused-import"
-    ),
+        "-unchecked",
+        "-deprecation",
+        "-language:_",
+        "-target:jvm-1.8",
+        "-encoding",
+        "UTF-8",
+        "-Ypartial-unification",
+        "-Ywarn-unused-import"
+      ),
     Compile / unmanagedSourceDirectories := Seq((Compile / scalaSource).value),
     Test / unmanagedSourceDirectories := Seq((Test / scalaSource).value),
     testFrameworks += new TestFramework("utest.runner.Framework"),
@@ -88,9 +88,9 @@ lazy val fixSettings =
   Seq(
     addCompilerPlugin(scalafixSemanticdb),
     scalacOptions ++= Seq(
-      "-Yrangepos",
-      "-Ywarn-unused-import"
-    )
+        "-Yrangepos",
+        "-Ywarn-unused-import"
+      )
   )
 
 lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")
