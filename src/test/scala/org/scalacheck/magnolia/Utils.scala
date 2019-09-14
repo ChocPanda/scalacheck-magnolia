@@ -36,9 +36,9 @@ object Utils {
         case (lhs: Array[_], rhs: Array[_]) =>
           Predef.assert(lhs.toSeq == rhs.toSeq, s"==> assertion failed: ${lhs.toSeq} != ${rhs.toSeq}")
         case (lhs: Gen[_], rhs: Gen[_]) =>
-          compareGen(lhs, rhs)(100)
+          compareGen(lhs, rhs)(50)
         case (lhs: Arbitrary[_], rhs: Arbitrary[_]) =>
-          compareGen(lhs.arbitrary, rhs.arbitrary)(100)
+          compareGen(lhs.arbitrary, rhs.arbitrary)(50)
         case (_, _) =>
           Predef.assert(lhs == rhs, s"==> assertion failed: $lhs != $rhs")
       }
@@ -53,9 +53,9 @@ object Utils {
         case (lhs: Array[_], rhs: Array[_]) =>
           Predef.assert(lhs.toSeq != rhs.toSeq, s"==> assertion failed: ${lhs.toSeq} != ${rhs.toSeq}")
         case (lhs: Gen[_], rhs: Gen[_]) =>
-          compareGenNot(lhs, rhs)(100)
+          compareGenNot(lhs, rhs)(50)
         case (lhs: Arbitrary[_], rhs: Arbitrary[_]) =>
-          compareGenNot(lhs.arbitrary, rhs.arbitrary)(100)
+          compareGenNot(lhs.arbitrary, rhs.arbitrary)(50)
         case (_, _) =>
           Predef.assert(lhs != rhs, s"==> assertion failed: $lhs != $rhs")
       }
