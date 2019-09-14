@@ -69,9 +69,9 @@ object Utils {
     val seed       = Seed.random()
 
     val generated =
-      Stream
+      LazyList
         .continually(first.doApply(parameters, seed).retrieve)
-        .zip(Stream.continually(second.doApply(parameters, seed).retrieve))
+        .zip(LazyList.continually(second.doApply(parameters, seed).retrieve))
         .take(len)
 
     generated.foreach { case (a, b) => a ==> b }
@@ -82,9 +82,9 @@ object Utils {
     val seed       = Seed.random()
 
     val generated =
-      Stream
+      LazyList
         .continually(first.doApply(parameters, seed).retrieve)
-        .zip(Stream.continually(second.doApply(parameters, seed).retrieve))
+        .zip(LazyList.continually(second.doApply(parameters, seed).retrieve))
         .take(len)
 
     generated.foreach { case (a, b) => a =!=> b }
