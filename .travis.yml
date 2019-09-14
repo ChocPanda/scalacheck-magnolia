@@ -28,12 +28,12 @@ jobs:
       script: sbt fixcheck
     - env: TEST="compile"
       name: "Compile"
-      script: sbt compile
+      script: sbt ++$TRAVIS_SCALA_VERSION compile
     - env: TEST="test"
       name: "Unit tests"
       script: bash scripts/run-ci-tests.sh
     - stage: release
-      script: sbt ci-release
+      script: sbt ++$TRAVIS_SCALA_VERSION ci-release
 
 cache:
   directories:
