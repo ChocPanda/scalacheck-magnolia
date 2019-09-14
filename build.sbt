@@ -48,8 +48,9 @@ lazy val settings =
 lazy val commonSettings =
   Seq(
     // scalaVersion from .travis.yml via sbt-travisci
-    // scalaVersion := "2.12.8",
+    // scalaVersion := "2.12.10",
     name := "Scalacheck Magnolia",
+    turbo := true,
     organization := "com.github.chocpanda",
     homepage := Option(url("https://github.com/ChocPanda/scalacheck-magnolia")),
     startYear := Some(2018),
