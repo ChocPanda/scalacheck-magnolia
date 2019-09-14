@@ -53,12 +53,12 @@ def versionedSettings(scalaVersion: String) = CrossVersion.partialVersion(scalaV
 lazy val commonSettings =
   Seq(
     // scalaVersion from .travis.yml via sbt-travisci
-    // scalaVersion := "2.12.10",
+    // scalaVersion := "2.12.10", "2.13.0"
     name := "Scalacheck Magnolia",
     turbo := true,
     organization := "com.github.chocpanda",
     homepage := Option(url("https://github.com/ChocPanda/scalacheck-magnolia")),
-    startYear := Some(2018),
+    startYear := Option(2018),
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers := List(
         Developer(

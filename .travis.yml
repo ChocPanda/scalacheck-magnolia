@@ -1,12 +1,10 @@
 # See https://www.scala-sbt.org/1.0/docs/Travis-CI-with-sbt.html
 
-
 sudo: false
 
 language: scala
 
 scala:
-  - 2.11.12
   - 2.12.10
   - 2.13.0
 
