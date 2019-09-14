@@ -78,7 +78,13 @@ lazy val commonSettings =
         "UTF-8"
       ) ++ versionedSettings(scalaVersion.value),
     Compile / unmanagedSourceDirectories := Seq((Compile / scalaSource).value),
-    Test / unmanagedSourceDirectories := Seq((Test / scalaSource).value),
+    Test / unmanagedSourceDirectories := Seq(
+        (Test / scalaSource).value,
+        CrossVersion.partialVersion(scalaVersion.value) match {
+          case Some((2, n)) if n >= 13 => baseDirectory.value / "src" / "test" / "scala-2.13+"
+          case _                       => baseDirectory.value / "src" / "test" / "scala-2.13-"
+        }
+      ),
     testFrameworks += new TestFramework("utest.runner.Framework"),
     Compile / compile / wartremoverWarnings ++= Warts.unsafe
   )
