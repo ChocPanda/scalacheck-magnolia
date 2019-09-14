@@ -39,41 +39,43 @@ final case class Address(line1: String, occupant: Human)
 
 sealed trait Alphabet
 
-final case class Greek(`άλφα`: Letter,
-                       `βήτα`: Letter,
-                       `γάμα`: Letter,
-                       `δέλτ`: Letter,
-                       `έψιλον`: Letter,
-                       `ζήτα`: Letter,
-                       `ήτ`: Letter,
-                       `θήτα`: Letter)
-    extends Alphabet
+final case class Greek(
+  `άλφα`: Letter,
+  `βήτα`: Letter,
+  `γάμα`: Letter,
+  `δέλτ`: Letter,
+  `έψιλον`: Letter,
+  `ζήτα`: Letter,
+  `ήτ`: Letter,
+  `θήτα`: Letter
+) extends Alphabet
 
 final case class Cyrillic(`б`: Letter, `в`: Letter, `г`: Letter, `д`: Letter, `ж`: Letter, `з`: Letter) extends Alphabet
 
-final case class Latin(a: Letter,
-                       b: Letter,
-                       c: Letter,
-                       d: Letter,
-                       e: Letter,
-                       f: Letter,
-                       g: Letter,
-                       h: Letter,
-                       i: Letter,
-                       j: Letter,
-                       k: Letter,
-                       l: Letter,
-                       m: Letter,
-                       n: Letter,
-                       o: Letter,
-                       p: Letter,
-                       q: Letter,
-                       r: Letter,
-                       s: Letter,
-                       t: Letter,
-                       u: Letter,
-                       v: Letter)
-    extends Alphabet
+final case class Latin(
+  a: Letter,
+  b: Letter,
+  c: Letter,
+  d: Letter,
+  e: Letter,
+  f: Letter,
+  g: Letter,
+  h: Letter,
+  i: Letter,
+  j: Letter,
+  k: Letter,
+  l: Letter,
+  m: Letter,
+  n: Letter,
+  o: Letter,
+  p: Letter,
+  q: Letter,
+  r: Letter,
+  s: Letter,
+  t: Letter,
+  u: Letter,
+  v: Letter
+) extends Alphabet
 
 final case class Letter(name: String, phonetic: String)
 final case class Country(name: String, language: List[Language], leader: Person, existence: DateRange)
