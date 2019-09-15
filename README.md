@@ -1,8 +1,9 @@
 # Scalacheck Magnolia #
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b6042a90ee4947da83606933e800b122)](https://app.codacy.com/app/ChocPanda/scalacheck-magnolia?utm_source=github.com&utm_medium=referral&utm_content=ChocPanda/scalacheck-magnolia&utm_campaign=Badge_Grade_Dashboard)
-[![Build Status](https://travis-ci.org/ChocPanda/scalacheck-magnolia.svg?branch=master)](https://travis-ci.org/ChocPanda/scalacheck-magnolia)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.chocpanda/scalacheck-magnolia_2.12/badge.svg)](https://search.maven.org/search?q=a:scalacheck-magnolia_2.12)
+[![Build Status](https://travis-ci.com/ChocPanda/scalacheck-magnolia.svg?branch=master)](https://travis-ci.com/ChocPanda/scalacheck-magnolia)
+[![2.12 - Maven Central](https://img.shields.io/maven-central/v/com.github.chocpanda/scalacheck-magnolia_2.12?label=2.12%20-%20maven-central)](https://search.maven.org/search?q=g:com.github.chocpanda%20AND%20a:scalacheck-magnolia_2.12)
+[![2.13 - Maven Central](https://img.shields.io/maven-central/v/com.github.chocpanda/scalacheck-magnolia_2.13?label=2.13%20-%20maven-central)](https://search.maven.org/search?q=g:com.github.chocpanda%20AND%20a:scalacheck-magnolia_2.13)
 
 This library will derive instances of the Arbitrary type class from [scalacheck](https://github.com/rickynils/scalacheck)
 using [Magnolia](https://github.com/propensive/magnolia). The functionality would be very similar to
@@ -11,7 +12,7 @@ compile time benefits that magnolia provides over shapeless.
 
 It's very simple to use simply add to your build.sbt:
 ```scala
-    libraryDependencies += "com.github.chocpanda" %% "scalacheck-magnolia" % "0.2.2"
+    libraryDependencies += "com.github.chocpanda" %% "scalacheck-magnolia" % "0.3.0"
 ```
 
 and import:
