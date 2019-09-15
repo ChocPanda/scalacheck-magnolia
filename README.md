@@ -38,9 +38,9 @@ object ExampleTest extends TestSuite {
     
     sealed trait Entity
     
-    final case class Company(name: String)         extends Entity
-    final case class Human(name: String, age: Int) extends Entity
-    final case class Address(line1: String, occupant: Human)
+    final case class Company(name: String)                      extends Entity
+    final case class Human(name: String, age: Int)              extends Entity
+    final case class Address(line1: String, occupant: Human)    extends Entity
 
     val tests = Tests {
         "My first test description" - forAll {
