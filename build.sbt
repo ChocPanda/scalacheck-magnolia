@@ -45,14 +45,20 @@ lazy val settings =
   fixSettings ++
   styleSettings
 
+def versionedSettings(scalaVersion: String) = CrossVersion.partialVersion(scalaVersion) match {
+  case Some((2, n)) if n <= 12 => Seq("-Ypartial-unification", "-Ywarn-unused-import", "-Yrangepos")
+  case _                       => Seq()
+}
+
 lazy val commonSettings =
   Seq(
     // scalaVersion from .travis.yml via sbt-travisci
-    // scalaVersion := "2.12.8",
+    // scalaVersion := "2.12.10", "2.13.0"
     name := "Scalacheck Magnolia",
+    turbo := true,
     organization := "com.github.chocpanda",
     homepage := Option(url("https://github.com/ChocPanda/scalacheck-magnolia")),
-    startYear := Some(2018),
+    startYear := Option(2018),
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers := List(
         Developer(
@@ -63,18 +69,22 @@ lazy val commonSettings =
         )
       ),
     updateOptions := updateOptions.value.withGigahorse(false),
-    scalacOptions ++= Seq(
+    scalacOptions := Seq(
         "-unchecked",
         "-deprecation",
         "-language:_",
         "-target:jvm-1.8",
         "-encoding",
-        "UTF-8",
-        "-Ypartial-unification",
-        "-Ywarn-unused-import"
-      ),
+        "UTF-8"
+      ) ++ versionedSettings(scalaVersion.value),
     Compile / unmanagedSourceDirectories := Seq((Compile / scalaSource).value),
-    Test / unmanagedSourceDirectories := Seq((Test / scalaSource).value),
+    Test / unmanagedSourceDirectories := Seq(
+        (Test / scalaSource).value,
+        CrossVersion.partialVersion(scalaVersion.value) match {
+          case Some((2, n)) if n >= 13 => baseDirectory.value / "src" / "test" / "scala-2.13+"
+          case _                       => baseDirectory.value / "src" / "test" / "scala-2.13-"
+        }
+      ),
     testFrameworks += new TestFramework("utest.runner.Framework"),
     Compile / compile / wartremoverWarnings ++= Warts.unsafe
   )
@@ -86,11 +96,7 @@ lazy val fmtSettings =
 
 lazy val fixSettings =
   Seq(
-    addCompilerPlugin(scalafixSemanticdb),
-    scalacOptions ++= Seq(
-        "-Yrangepos",
-        "-Ywarn-unused-import"
-      )
+    addCompilerPlugin(scalafixSemanticdb)
   )
 
 lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")
