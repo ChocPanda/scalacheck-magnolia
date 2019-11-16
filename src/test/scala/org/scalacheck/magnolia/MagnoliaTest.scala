@@ -22,7 +22,6 @@ import org.scalacheck.magnolia.adt._
 import utest.{ ArrowAssert => _, _ }
 
 object MagnoliaTest extends TestSuite {
-
   private val testSize = 50
 
   sealed trait TestTrait
@@ -54,7 +53,6 @@ object MagnoliaTest extends TestSuite {
 
   val tests = Tests {
     "Generate" - {
-
       "EmptyCC" - {
         val arb = org.scalacheck.magnolia.gen[EmptyCC]
         arb.arbitrary.sample ==> Option(EmptyCC())
@@ -76,7 +74,6 @@ object MagnoliaTest extends TestSuite {
       }
 
       "Containers" - {
-
         "Vector" - {
           val arbVectorSimple = Arbitrary.arbitrary[Vector[Simple]]
 
@@ -102,7 +99,6 @@ object MagnoliaTest extends TestSuite {
       }
 
       "ADTs" - {
-
         "Letter" - {
           val arb = org.scalacheck.magnolia.gen[Letter]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
@@ -165,5 +161,4 @@ object MagnoliaTest extends TestSuite {
       }
     }
   }
-
 }

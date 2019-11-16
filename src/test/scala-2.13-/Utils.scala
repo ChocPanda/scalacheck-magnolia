@@ -21,7 +21,6 @@ import org.scalacheck._
 import org.scalacheck.rng.Seed
 
 object Utils {
-
   /**
     * This was largely copy and pasted from:
     * https://github.com/lihaoyi/utest/blob/5b382ae0a4bb3a25d8cb64d332b7bcb7fc73ace2/utest/shared/src/main/scala/utest/asserts/Asserts.scala#L185
@@ -89,5 +88,4 @@ object Utils {
 
     generated.foreach { case (a, b) => a =!=> b }
   }
-
 }
