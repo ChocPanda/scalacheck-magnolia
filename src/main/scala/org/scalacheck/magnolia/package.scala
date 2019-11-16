@@ -22,7 +22,6 @@ import mercator.Monadic
 import scala.language.experimental.macros
 
 package object magnolia {
-
   type Typeclass[T] = Arbitrary[T]
 
   def combine[T](caseClass: CaseClass[Typeclass, T]): Typeclass[T] = Arbitrary {
