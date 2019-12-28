@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.scalacheck.magnolia
+package org.scalacheck.magnolia.test
 
 import org.scalacheck.{ Arbitrary, Gen }
 import org.scalacheck.magnolia.Utils._
