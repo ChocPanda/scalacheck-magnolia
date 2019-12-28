@@ -54,22 +54,22 @@ object MagnoliaTest extends TestSuite {
   val tests = Tests {
     "Generate" - {
       "EmptyCC" - {
-        val arb = org.scalacheck.magnolia.gen[EmptyCC]
+        val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[EmptyCC]
         arb.arbitrary.sample ==> Option(EmptyCC())
       }
 
       "Simple" - {
-        val arb = org.scalacheck.magnolia.gen[Simple]
+        val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Simple]
         expectedSimpleGen ==> arb.arbitrary
       }
 
       "Nested" - {
-        val arb = org.scalacheck.magnolia.gen[Nested]
+        val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Nested]
         expectedNestedGen ==> arb.arbitrary
       }
 
       "TestTrait" - {
-        val arb = org.scalacheck.magnolia.gen[TestTrait]
+        val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[TestTrait]
         arb.arbitrary ==> arb.arbitrary
       }
 
@@ -100,62 +100,62 @@ object MagnoliaTest extends TestSuite {
 
       "ADTs" - {
         "Letter" - {
-          val arb = org.scalacheck.magnolia.gen[Letter]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Letter]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Country" - {
-          val arb = org.scalacheck.magnolia.gen[Country]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Country]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Language" - {
-          val arb = org.scalacheck.magnolia.gen[Language]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Language]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Person" - {
-          val arb = org.scalacheck.magnolia.gen[Person]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Person]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Date" - {
-          val arb = org.scalacheck.magnolia.gen[Date]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Date]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "DateRange" - {
-          val arb = org.scalacheck.magnolia.gen[DateRange]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[DateRange]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Tree" - {
-          val arb = org.scalacheck.magnolia.gen[Tree]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Tree]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Alphabet" - {
-          val arb = org.scalacheck.magnolia.gen[Alphabet]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Alphabet]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Entity" - {
-          val arb = org.scalacheck.magnolia.gen[Entity]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Entity]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Month" - {
-          val arb = org.scalacheck.magnolia.gen[Month]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[Month]
           assert(arb.arbitrary.sample =!=> arb.arbitrary.sample)
         }
 
         "IntGTree" - {
-          val arb = org.scalacheck.magnolia.gen[GTree[Int]]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[GTree[Int]]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "EntityGTree" - {
-          val arb = org.scalacheck.magnolia.gen[GTree[Entity]]
+          val arb = org.scalacheck.magnolia.arbitraryFromDerivedArbitrary[GTree[Entity]]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
       }
