@@ -20,6 +20,6 @@ package object magnolia {
   implicit def arbitraryFromDerivedArbitrary[T](implicit derived: DerivedArbitrary[T]): Arbitrary[T] =
     derived.underlying
 
-  implicit def CogenFromDerivedCogen[T](implicit derived: DerivedCogen[T]): Cogen[T] =
+  implicit def cogenFromDerivedCogen[T](implicit derived: DerivedCogen[T]): Cogen[T] =
     derived.underlying
 }
