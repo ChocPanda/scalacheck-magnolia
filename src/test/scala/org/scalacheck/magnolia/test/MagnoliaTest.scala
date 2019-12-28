@@ -51,6 +51,12 @@ object MagnoliaTest extends TestSuite {
       p3 <- expectedTestTraitGen
     } yield Recursive(p1, p2, p3)
 
+  locally {
+    import org.scalacheck.Cogen
+    import org.scalacheck.magnolia._
+    println(implicitly[Cogen[EmptyCC]])
+  }
+
   val tests = Tests {
     "Generate" - {
       "EmptyCC" - {
