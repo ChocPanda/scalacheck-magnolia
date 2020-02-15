@@ -25,9 +25,7 @@ package object magnolia {
   type Typeclass[T] = Arbitrary[T]
 
   def combine[T](caseClass: CaseClass[Typeclass, T]): Typeclass[T] = Arbitrary {
-    Gen.lzy(caseClass.constructMonadic { param =>
-      param.typeclass.arbitrary
-    })
+    Gen.lzy(caseClass.constructMonadic(param => param.typeclass.arbitrary))
   }
 
   def dispatch[T](sealedTrait: SealedTrait[Typeclass, T]): Typeclass[T] = Arbitrary {
