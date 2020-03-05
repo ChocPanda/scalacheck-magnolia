@@ -1,6 +1,6 @@
 addSbtPlugin("com.geirsson"      % "sbt-ci-release"         % "1.5.2")
 addSbtPlugin("com.dwijnand"      % "sbt-travisci"           % "1.2.0")
-addSbtPlugin("org.scalameta"     % "sbt-scalafmt"           % "2.3.1")
+addSbtPlugin("org.scalameta"     % "sbt-scalafmt"           % "2.3.2")
 addSbtPlugin("de.heikoseeberger" % "sbt-header"             % "5.4.0")
 addSbtPlugin("org.wartremover"   % "sbt-wartremover"        % "2.4.5")
 addSbtPlugin("ch.epfl.scala"     % "sbt-scalafix"           % "0.9.11")
