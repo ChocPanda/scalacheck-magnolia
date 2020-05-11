@@ -24,13 +24,15 @@ import scala.language.experimental.macros
 package object magnolia {
   type Typeclass[T] = Arbitrary[T]
 
-  def combine[T](caseClass: CaseClass[Typeclass, T]): Typeclass[T] = Arbitrary {
-    Gen.lzy(caseClass.constructMonadic(param => param.typeclass.arbitrary))
-  }
+  def combine[T](caseClass: CaseClass[Typeclass, T]): Typeclass[T] =
+    Arbitrary {
+      Gen.lzy(caseClass.constructMonadic(param => param.typeclass.arbitrary))
+    }
 
-  def dispatch[T](sealedTrait: SealedTrait[Typeclass, T]): Typeclass[T] = Arbitrary {
-    Gen.oneOf(sealedTrait.subtypes.map(_.typeclass.arbitrary)).flatMap(identity)
-  }
+  def dispatch[T](sealedTrait: SealedTrait[Typeclass, T]): Typeclass[T] =
+    Arbitrary {
+      Gen.oneOf(sealedTrait.subtypes.map(_.typeclass.arbitrary)).flatMap(identity)
+    }
 
   implicit private val monadicGen: Monadic[Gen] = new Monadic[Gen] {
     override def point[A](value: A): Gen[A] = Gen.const(value)
