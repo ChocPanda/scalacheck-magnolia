@@ -45,10 +45,11 @@ lazy val settings =
   fixSettings ++
   styleSettings
 
-def versionedSettings(scalaVersion: String) = CrossVersion.partialVersion(scalaVersion) match {
-  case Some((2, n)) if n <= 12 => Seq("-Ypartial-unification", "-Ywarn-unused-import", "-Yrangepos")
-  case _                       => Seq()
-}
+def versionedSettings(scalaVersion: String) =
+  CrossVersion.partialVersion(scalaVersion) match {
+    case Some((2, n)) if n <= 12 => Seq("-Ypartial-unification", "-Ywarn-unused-import", "-Yrangepos")
+    case _                       => Seq()
+  }
 
 lazy val commonSettings =
   Seq(
@@ -100,12 +101,11 @@ lazy val fixSettings =
   )
 
 lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")
-lazy val styleSettings = {
+lazy val styleSettings =
   Seq(
     scalastyleFailOnError := true,
     scalastyleFailOnWarning := true
   )
-}
 
 // *****************************************************************************
 // Commands
