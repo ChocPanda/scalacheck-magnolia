@@ -7,7 +7,7 @@ addSbtPlugin("ch.epfl.scala"     % "sbt-scalafix"          % "0.9.18")
 addSbtPlugin("org.scalastyle"   %% "scalastyle-sbt-plugin" % "1.0.0")
 addSbtPlugin("net.virtual-void"  % "sbt-dependency-graph"  % "0.9.2")
 addSbtPlugin("net.vonbuchholtz"  % "sbt-dependency-check"  % "2.0.0")
-addSbtPlugin("com.eed3si9n"      % "sbt-buildinfo"         % "0.9.0")
+addSbtPlugin("com.eed3si9n"      % "sbt-buildinfo"         % "0.10.0")
 addSbtPlugin("org.scoverage"     % "sbt-scoverage"         % "1.6.1")
 addSbtPlugin("com.codacy"        % "sbt-codacy-coverage"   % "3.0.3")
 
