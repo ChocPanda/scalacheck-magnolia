@@ -104,7 +104,6 @@ object ExampleTest extends TestSuite {
 }
 ```
 
-
 ## Contribution policy ##
 
 Contributions via GitHub pull requests are gladly accepted from their original author. Along with
