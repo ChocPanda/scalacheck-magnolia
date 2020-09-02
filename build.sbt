@@ -9,7 +9,8 @@ lazy val `scalacheck-magnolia` =
     .settings(
       libraryDependencies ++= Seq(
           library.magnolia,
-          library.scalaCheck
+          library.scalaCheck,
+          library.scalaReflect % (scalaVersion in ThisBuild).value % Provided
         ),
       libraryDependencies ++= Seq(
           library.utest % Test
@@ -26,13 +27,14 @@ lazy val library =
   new {
     object Version {
       val scalaCheck = "1.14.3"
-      val magnolia   = "0.14.5"
+      val magnolia   = "0.17.0"
       val utest      = "0.7.5"
     }
 
-    val magnolia   = "com.propensive" %% "magnolia"   % Version.magnolia
-    val scalaCheck = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
-    val utest      = "com.lihaoyi"    %% "utest"      % Version.utest
+    val magnolia     = "com.propensive" %% "magnolia"   % Version.magnolia
+    val scalaReflect = "org.scala-lang"  % "scala-reflect"
+    val scalaCheck   = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
+    val utest        = "com.lihaoyi"    %% "utest"      % Version.utest
   }
 
 // *****************************************************************************
