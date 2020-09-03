@@ -55,8 +55,6 @@ def versionedSettings(scalaVersion: String) =
 
 lazy val commonSettings =
   Seq(
-    // scalaVersion from .travis.yml via sbt-travisci
-    // scalaVersion := "2.12.10", "2.13.0"
     name := "Scalacheck Magnolia",
     turbo := true,
     organization := "com.github.chocpanda",
@@ -71,12 +69,10 @@ lazy val commonSettings =
           url("https://github.com/ChocPanda/")
         )
       ),
-    updateOptions := updateOptions.value.withGigahorse(false),
     scalacOptions := Seq(
         "-unchecked",
         "-deprecation",
         "-language:_",
-        "-target:jvm-1.8",
         "-encoding",
         "UTF-8"
       ) ++ versionedSettings(scalaVersion.value),

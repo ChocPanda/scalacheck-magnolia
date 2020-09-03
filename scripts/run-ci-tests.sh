@@ -4,4 +4,4 @@
 sbt ++$TRAVIS_SCALA_VERSION clean coverage test
 sbt coverageReport
 sbt coverageAggregate
-sbt codacyCoverage
+bash <(curl -Ls https://coverage.codacy.com/get.sh)
