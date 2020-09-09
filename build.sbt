@@ -8,13 +8,13 @@ lazy val `scalacheck-magnolia` =
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
-          library.magnolia,
-          library.scalaCheck,
-          library.scalaReflect % (scalaVersion in ThisBuild).value % Provided
-        ),
+        library.magnolia,
+        library.scalaCheck,
+        library.scalaReflect % (scalaVersion in ThisBuild).value % Provided
+      ),
       libraryDependencies ++= Seq(
-          library.utest % Test
-        )
+        library.utest % Test
+      )
     )
     .enablePlugins(AutomateHeaderPlugin)
     .enablePlugins(GitBranchPrompt)
@@ -62,28 +62,28 @@ lazy val commonSettings =
     startYear := Option(2018),
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers := List(
-        Developer(
-          "ChocPanda",
-          "Matt Searle",
-          "mattsearle@ymail.com",
-          url("https://github.com/ChocPanda/")
-        )
-      ),
+      Developer(
+        "ChocPanda",
+        "Matt Searle",
+        "mattsearle@ymail.com",
+        url("https://github.com/ChocPanda/")
+      )
+    ),
     scalacOptions := Seq(
-        "-unchecked",
-        "-deprecation",
-        "-language:_",
-        "-encoding",
-        "UTF-8"
-      ) ++ versionedSettings(scalaVersion.value),
+      "-unchecked",
+      "-deprecation",
+      "-language:_",
+      "-encoding",
+      "UTF-8"
+    ) ++ versionedSettings(scalaVersion.value),
     Compile / unmanagedSourceDirectories := Seq((Compile / scalaSource).value),
     Test / unmanagedSourceDirectories := Seq(
-        (Test / scalaSource).value,
-        CrossVersion.partialVersion(scalaVersion.value) match {
-          case Some((2, n)) if n >= 13 => baseDirectory.value / "src" / "test" / "scala-2.13+"
-          case _                       => baseDirectory.value / "src" / "test" / "scala-2.13-"
-        }
-      ),
+      (Test / scalaSource).value,
+      CrossVersion.partialVersion(scalaVersion.value) match {
+        case Some((2, n)) if n >= 13 => baseDirectory.value / "src" / "test" / "scala-2.13+"
+        case _                       => baseDirectory.value / "src" / "test" / "scala-2.13-"
+      }
+    ),
     testFrameworks += new TestFramework("utest.runner.Framework"),
     Compile / compile / wartremoverWarnings ++= Warts.unsafe
   )
