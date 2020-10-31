@@ -26,7 +26,7 @@ lazy val `scalacheck-magnolia` =
 lazy val library =
   new {
     object Version {
-      val scalaCheck = "1.14.3"
+      val scalaCheck = "1.15.0"
       val magnolia   = "0.17.0"
       val utest      = "0.7.5"
     }
