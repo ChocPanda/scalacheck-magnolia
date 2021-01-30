@@ -6,7 +6,7 @@ addSbtPlugin("org.wartremover"   % "sbt-wartremover"       % "2.4.13")
 addSbtPlugin("ch.epfl.scala"     % "sbt-scalafix"          % "0.9.24")
 addSbtPlugin("org.scalastyle"   %% "scalastyle-sbt-plugin" % "1.0.0")
 addSbtPlugin("net.virtual-void"  % "sbt-dependency-graph"  % "0.9.2")
-addSbtPlugin("net.vonbuchholtz"  % "sbt-dependency-check"  % "2.1.0")
+addSbtPlugin("net.vonbuchholtz"  % "sbt-dependency-check"  % "3.1.0")
 addSbtPlugin("com.eed3si9n"      % "sbt-buildinfo"         % "0.10.0")
 addSbtPlugin("org.scoverage"     % "sbt-scoverage"         % "1.6.1")
 
