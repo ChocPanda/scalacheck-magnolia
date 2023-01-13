@@ -1,14 +1,38 @@
-# ScalaCheck Magnolia #
+# ScalaCheck Magnolia (with auto/semi-auto semantics) #
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b6042a90ee4947da83606933e800b122)](https://app.codacy.com/app/ChocPanda/scalacheck-magnolia?utm_source=github.com&utm_medium=referral&utm_content=ChocPanda/scalacheck-magnolia&utm_campaign=Badge_Grade_Dashboard)
-[![Build Status](https://travis-ci.com/ChocPanda/scalacheck-magnolia.svg?branch=master)](https://travis-ci.com/ChocPanda/scalacheck-magnolia)
-[![2.12 - Maven Central](https://img.shields.io/maven-central/v/com.github.chocpanda/scalacheck-magnolia_2.12?label=2.12%20-%20maven-central)](https://search.maven.org/search?q=g:com.github.chocpanda%20AND%20a:scalacheck-magnolia_2.12)
-[![2.13 - Maven Central](https://img.shields.io/maven-central/v/com.github.chocpanda/scalacheck-magnolia_2.13?label=2.13%20-%20maven-central)](https://search.maven.org/search?q=g:com.github.chocpanda%20AND%20a:scalacheck-magnolia_2.13)
+This fork exists to add semiauto/auto derivation semantics, similar to [circe](https://github.com/circe/circe):
 
-This library will derive instances of the Arbitrary type class from [scalacheck](https://github.com/rickynils/scalacheck)
-using [Magnolia](https://github.com/propensive/magnolia). The functionality would be very similar to
-[scalacheck-shapeless](https://github.com/alexarchambault/scalacheck-shapeless) but hopefully with the
-compile time benefits that magnolia provides over shapeless.
+```scala
+import org.scalacheck.Prop.forAll
+
+case class Foo(i: Int)
+case class Bar(i: Int)
+
+// Autoderivation - equivalent to old 'gen' method.
+// Arbitrary[Foo] generated twice during compilation - can be slow if Foo is large/deeply nested.
+object Test1 {
+  import org.scalacheck.magnolia.auto._
+  
+  // Implicit Arbitrary[Foo] required by forAll
+  forAll { (f: Foo) => ... }  // Test1
+  forAll { (f: Foo) => ... }  // Test2
+}
+
+// Instances of Arbitrary[Foo] derived once, explicitly - usually kept somewhere outside the test.
+object Test2 {
+  import org.scalacheck.magnolia.semiauto._
+  
+  implicit val arbFoo: Arbitrary[Foo]  = deriveArbitrary[Foo]
+
+  // Implicit Arbitrary[Foo] required by forAll
+  forAll { (f: Foo) => ... }  // Test1
+  forAll { (f: Foo) => ... }  // Test2
+}
+```
+
+I've seen this reduce compile times by over 80%.
+
+# Instructions
 
 It's very simple to use simply add to your build.sbt:
 ```scala

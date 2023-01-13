@@ -16,6 +16,7 @@
 
 package org.scalacheck.magnolia
 
+import org.scalacheck.magnolia.auto._
 import org.scalacheck.{ Arbitrary, Gen }
 import org.scalacheck.magnolia.Utils._
 import org.scalacheck.magnolia.adt._
@@ -54,22 +55,22 @@ object MagnoliaTest extends TestSuite {
   val tests = Tests {
     "Generate" - {
       "EmptyCC" - {
-        val arb = org.scalacheck.magnolia.gen[EmptyCC]
+        val arb = deriveArbitrary[EmptyCC]
         arb.arbitrary.sample ==> Option(EmptyCC())
       }
 
       "Simple" - {
-        val arb = org.scalacheck.magnolia.gen[Simple]
+        val arb = deriveArbitrary[Simple]
         expectedSimpleGen ==> arb.arbitrary
       }
 
       "Nested" - {
-        val arb = org.scalacheck.magnolia.gen[Nested]
+        val arb = deriveArbitrary[Nested]
         expectedNestedGen ==> arb.arbitrary
       }
 
       "TestTrait" - {
-        val arb = org.scalacheck.magnolia.gen[TestTrait]
+        val arb = deriveArbitrary[TestTrait]
         arb.arbitrary ==> arb.arbitrary
       }
 
@@ -100,62 +101,62 @@ object MagnoliaTest extends TestSuite {
 
       "ADTs" - {
         "Letter" - {
-          val arb = org.scalacheck.magnolia.gen[Letter]
+          val arb = deriveArbitrary[Letter]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Country" - {
-          val arb = org.scalacheck.magnolia.gen[Country]
+          val arb = deriveArbitrary[Country]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Language" - {
-          val arb = org.scalacheck.magnolia.gen[Language]
+          val arb = deriveArbitrary[Language]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Person" - {
-          val arb = org.scalacheck.magnolia.gen[Person]
+          val arb = deriveArbitrary[Person]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Date" - {
-          val arb = org.scalacheck.magnolia.gen[Date]
+          val arb = deriveArbitrary[Date]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "DateRange" - {
-          val arb = org.scalacheck.magnolia.gen[DateRange]
+          val arb = deriveArbitrary[DateRange]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Tree" - {
-          val arb = org.scalacheck.magnolia.gen[Tree]
+          val arb = deriveArbitrary[Tree]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Alphabet" - {
-          val arb = org.scalacheck.magnolia.gen[Alphabet]
+          val arb = deriveArbitrary[Alphabet]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Entity" - {
-          val arb = org.scalacheck.magnolia.gen[Entity]
+          val arb = deriveArbitrary[Entity]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "Month" - {
-          val arb = org.scalacheck.magnolia.gen[Month]
+          val arb = deriveArbitrary[Month]
           assert(arb.arbitrary.sample =!=> arb.arbitrary.sample)
         }
 
         "IntGTree" - {
-          val arb = org.scalacheck.magnolia.gen[GTree[Int]]
+          val arb = deriveArbitrary[GTree[Int]]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
 
         "EntityGTree" - {
-          val arb = org.scalacheck.magnolia.gen[GTree[Entity]]
+          val arb = deriveArbitrary[GTree[Entity]]
           List.fill(testSize)(arb.arbitrary.sample).distinct.size > testSize - 3
         }
       }
